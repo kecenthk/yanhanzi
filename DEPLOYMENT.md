@@ -151,7 +151,7 @@ sudo docker exec 1Panel-openresty-EYlV openresty -s reload   # 重载 Nginx
 - 部署ID：`dpl_F8PJazRmaRsqK31TYkNkgioUj825`
 - 环境：production；Vercel状态：READY（构建约 47s）。
 - 框架：Next.js 16.4.3 / React 19.3.1；Tailwind CSS 4.3.3。
-- 部署源：本地 `website/` 目录，经 Vercel CLI 上传；未建立 Git 自动部署。
+- 部署源：本地 `website/` 目录，经 Vercel CLI 上传；Git 仓库 `kecenthk/yanhanzi` 已关联，但 Hobby 套餐不支持私有仓库协作部署，提交作者 `kejieleung` 非项目成员时 Git 部署会被阻止（需仓库转 Public、改用项目成员身份提交或升级 Pro）。框架预设已在 `vercel.json` 固定为 `nextjs`。
 - 环境变量：未配置（`.vercelignore` 已排除 `.env*`，密钥未上传）。
 - 部署保护：保留默认 Vercel SSO 保护（`all_except_custom_domains`），未登录访问会看到登录页或 404。若需公网匿名访问，需在 Project Settings → Deployment Protection 关闭。
 - 本地校验：TypeScript、ESLint 通过，测试 4/4 通过；Windows 本机 `next build` 因 `.next/node_modules/mysql2-*` junction 的 `EPERM` 失败（本地文件锁环境问题），Vercel 远程构建正常通过。
