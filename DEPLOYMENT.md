@@ -145,15 +145,16 @@ sudo docker exec 1Panel-openresty-EYlV openresty -s reload   # 重载 Nginx
 
 - 说明：原 `kejieleungs-projects/yanhanzi` 项目已无法访问（CLI 提示项目被删除/转移或无权访问，`https://yanhanzi.vercel.app` 返回 404）。本次在当前可用的 `kecenthk-6563s-projects` 空间新建 `yanhanzi` 项目并发布展示版。
 - 正式网址：https://yanhanzi.vercel.app（别名已绑定）
-- 部署网址：https://yanhanzi-2khttvfaq-kecenthk-6563s-projects.vercel.app
+- 部署网址：https://yanhanzi-b2dim4c8x-kecenthk-6563s-projects.vercel.app（Git 自动部署，最新提交 `ae9914c`）
 - Vercel项目：`kecenthk-6563s-projects/yanhanzi`
 - 项目ID：`prj_bb3xeVSh6UXaVddfpXKbU2O1c1eJ`；团队ID：`team_NMrZNoEDiumE4OoBlYhcToMu`
-- 部署ID：`dpl_F8PJazRmaRsqK31TYkNkgioUj825`
-- 环境：production；Vercel状态：READY（构建约 47s）。
+- 部署ID：`dpl_2PoHbRJGNTKeqAQxSdXk1CjxoTPH`
+- 环境：production；Vercel状态：READY（Git 自动构建）。
 - 框架：Next.js 16.4.3 / React 19.3.1；Tailwind CSS 4.3.3。
-- 部署源：本地 `website/` 目录，经 Vercel CLI 上传；Git 仓库 `kecenthk/yanhanzi` 已关联，但 Hobby 套餐不支持私有仓库协作部署，提交作者 `kejieleung` 非项目成员时 Git 部署会被阻止（需仓库转 Public、改用项目成员身份提交或升级 Pro）。框架预设已在 `vercel.json` 固定为 `nextjs`。
+- 部署源：Git 仓库 `kecenthk/yanhanzi`（已转为 Public）关联 Vercel，`git push` 自动触发生产部署；此前 Hobby 套餐私有仓库协作限制已解除。
+- 框架修正：项目预设原为 Other、输出目录 `public`，导致部署只含静态资源并返回 404；已在 `vercel.json` 固定 `framework: nextjs`，最新部署包含首页、`/about` 等服务端路由。
 - 环境变量：未配置（`.vercelignore` 已排除 `.env*`，密钥未上传）。
-- 部署保护：保留默认 Vercel SSO 保护（`all_except_custom_domains`），未登录访问会看到登录页或 404。若需公网匿名访问，需在 Project Settings → Deployment Protection 关闭。
+- 部署保护：实测匿名访问 `https://yanhanzi.vercel.app` 可正常打开首页与导航，未被 SSO 登录页拦截。
 - 本地校验：TypeScript、ESLint 通过，测试 4/4 通过；Windows 本机 `next build` 因 `.next/node_modules/mysql2-*` junction 的 `EPERM` 失败（本地文件锁环境问题），Vercel 远程构建正常通过。
 
 该版本为展示版。若继续在 Vercel 运行含后台的完整代码，需配置公网可访问的 MySQL；文件系统上传目录不适合无状态部署，建议改用持久化存储或对象存储。VPS 自托管是包含后台管理时的推荐方式。
